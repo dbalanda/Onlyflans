@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block 'title'%}
+<title>Contacto</title>
+{% endblock %}
+
+{% block 'content' %}
+<div class="container">  
+
+    <form action ='/contacto' method= 'post'>
+        {% csrf_token %}
+        {{form.non_field_errors}}
+
+        <div class='mb-3 text-center'>
+            <label for='{{form.customer_name.id_for_label}}' class='form-label'>
+                {{ form.customer_name.label_tag}}
+            </label>
+            <div>
+                {{form.customer_name}}
+            </div>
+            <div class='text-danger'>
+                {{form.customer_name.errors}}
+            </div>
+
+            <label for='{{form.customer_email.id_for_label}}' class='form-label'>
+                {{ form.customer_email.label_tag}}
+            </label>
+            <div>
+                {{form.customer_email}}
+            </div>
+            <div class='text-danger d-flex justify-content-center'>
+                {{form.customer_email.errors}}
+            </div>
+            
+            <label for='{{form.customer_message.id_for_label}}' class='form-label'>
+                {{ form.customer_message.label_tag}}
+            </label>
+            <div>
+                {{form.customer_message}}
+            </div>
+            <div class='text-danger'>
+                {{form.customer_message.errors}}
+            </div>
+
+
+            <input type="submit" value = 'Enviar' class= 'mt-4 btn btn-primary'> 
+        </div>
+
+
+        
+    </form>
+
+
+
+</div>
+{% endblock %}
